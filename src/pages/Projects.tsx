@@ -31,7 +31,7 @@ export function Projects() {
 
     useEffect(() => {
         const controller = new AbortController()
-        fetch('http://localhost:5000/projects', {
+        fetch(`${import.meta.env.DEV ? "http://localhost:5000" : "https://exclusive-golden-relish.glitch.me"}/projects`, {
             signal: controller.signal,
             method: 'GET',
             headers: {
@@ -52,7 +52,7 @@ export function Projects() {
     const message = location.state ? location.state.message : ''
 
     function removeProject(id: number) {
-        fetch(`http://localhost:5000/projects/${id}`, {
+        fetch(`${import.meta.env.DEV ? "http://localhost:5000" : "https://exclusive-golden-relish.glitch.me"}/projects/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'

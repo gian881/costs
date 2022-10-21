@@ -12,7 +12,7 @@ export function NewProject() {
         project.cost = 0
         project.services = []
 
-        fetch("http://localhost:5000/projects", {
+        fetch(`${import.meta.env.DEV ? "http://localhost:5000" : "https://exclusive-golden-relish.glitch.me"}/projects`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

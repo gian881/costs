@@ -28,7 +28,7 @@ export function ProjectPage() {
             return
         }
 
-        fetch(`http://localhost:5000/projects/${id}`, {
+        fetch(`${import.meta.env.DEV ? "http://localhost:5000" : "https://exclusive-golden-relish.glitch.me"}/projects/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
@@ -55,7 +55,7 @@ export function ProjectPage() {
         projectUpdated.services = servicesUpdated
         projectUpdated.cost -= cost
 
-        fetch(`http://localhost:5000/projects/${projectUpdated.id}`, {
+        fetch(`${import.meta.env.DEV ? "http://localhost:5000" : "https://exclusive-golden-relish.glitch.me"}/projects/${projectUpdated.id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
@@ -91,7 +91,7 @@ export function ProjectPage() {
         }
         project.cost = newCost
 
-        fetch(`http://localhost:5000/projects/${id}`, {
+        fetch(`${import.meta.env.DEV ? "http://localhost:5000" : "https://exclusive-golden-relish.glitch.me"}/projects/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
@@ -107,7 +107,7 @@ export function ProjectPage() {
 
     useEffect(() => {
         const controller = new AbortController()
-        fetch(`http://localhost:5000/projects/${id}`, {
+        fetch(`${import.meta.env.DEV ? "http://localhost:5000" : "https://exclusive-golden-relish.glitch.me"}/projects/${id}`, {
             signal: controller.signal,
             method: 'GET',
             headers: {

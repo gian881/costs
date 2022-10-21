@@ -22,7 +22,7 @@ export function ProjectForm({ handleSubmit, btnText, projectData }: ProjectFormP
 
     useEffect(() => {
         const controller = new AbortController()
-        fetch("http://localhost:5000/categories", {
+        fetch(`${import.meta.env.DEV ? "http://localhost:5000" : "https://exclusive-golden-relish.glitch.me"}/categories`, {
             signal: controller.signal,
             method: "GET",
             headers: {
