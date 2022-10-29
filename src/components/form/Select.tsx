@@ -1,5 +1,5 @@
 import { ChangeEvent } from 'react'
-import { Option } from '../project/ProjectForm'
+import { Option } from '../../types'
 import styles from './Select.module.css'
 
 interface SelectProps {
