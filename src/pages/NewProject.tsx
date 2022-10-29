@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { ProjectForm } from '../components/project/ProjectForm';
+import { ProjectFromApi } from '../types';
 import styles from './NewProject.module.css';
-import { ProjectFromApi } from './Projects';
+
 
 
 export function NewProject() {
@@ -12,7 +13,7 @@ export function NewProject() {
         project.cost = 0
         project.services = []
 
-        fetch(`${import.meta.env.DEV ? "http://localhost:5000" : "https://exclusive-golden-relish.glitch.me"}/projects`, {
+        fetch(`${import.meta.env.VITE_API_URL}/projects`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

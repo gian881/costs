@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
-import { ProjectFromApi } from '../../pages/Projects'
+import { ProjectFromApi } from '../../types'
 import { Input } from '../form/Input'
 import { SubmitButton } from '../form/SubmitButton'
 import styles from '../project/ProjectForm.module.css'

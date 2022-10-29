@@ -5,24 +5,8 @@ import { LinkButton } from "../components/layout/LinkButton";
 import { Loading } from "../components/layout/Loading";
 import { Message } from "../components/layout/Message";
 import { ProjectCard } from "../components/project/ProjectCard";
+import { ProjectFromApi } from "../types";
 import styles from './Projects.module.css';
-
-export interface ProjectFromApi {
-    category: {
-        id: number
-        name: string
-    },
-    name: string
-    budget: number
-    cost: number
-    services: {
-        name: string
-        cost: number
-        description: string
-        id: string
-    }[],
-    id: number
-}
 
 export function Projects() {
     const [projects, setProjects] = useState<ProjectFromApi[]>([])
@@ -31,7 +15,7 @@ export function Projects() {
 
     useEffect(() => {
         const controller = new AbortController()
-        fetch(`${import.meta.env.DEV ? "http://localhost:5000" : "https://exclusive-golden-relish.glitch.me"}/projects`, {
+        fetch(`${import.meta.env.VITE_API_URL}/projects`, {
             signal: controller.signal,
             method: 'GET',
             headers: {
@@ -52,7 +36,7 @@ export function Projects() {
     const message = location.state ? location.state.message : ''
 
     function removeProject(id: number) {
-        fetch(`${import.meta.env.DEV ? "http://localhost:5000" : "https://exclusive-golden-relish.glitch.me"}/projects/${id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/projects/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -85,7 +69,13 @@ export function Projects() {
                     key={project.id}
                 />))}
                 {loading && <Loading />}
-                {!loading && projects.length === 0 && <p>No projects found</p>}
+                {!loading && projects.length === 0 && (
+                    <>
+                        <p>No projects found.</p>
+                        <p>You can create a new project by clicking the button on the top right.</p>
+                    </>
+                )
+                }
             </Container>
         </div>
     )

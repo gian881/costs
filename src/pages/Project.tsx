@@ -7,8 +7,9 @@ import { Message } from '../components/layout/Message'
 import { ProjectForm } from '../components/project/ProjectForm'
 import { ServiceCard } from '../components/service/ServiceCard'
 import { ServiceForm } from '../components/service/ServiceForm'
+import { ProjectFromApi } from '../types'
 import styles from './Project.module.css'
-import type { ProjectFromApi } from './Projects'
+
 
 export function ProjectPage() {
     const { id } = useParams<{ id: string }>()
@@ -28,7 +29,7 @@ export function ProjectPage() {
             return
         }
 
-        fetch(`${import.meta.env.DEV ? "http://localhost:5000" : "https://exclusive-golden-relish.glitch.me"}/projects/${id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/projects/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
@@ -55,7 +56,7 @@ export function ProjectPage() {
         projectUpdated.services = servicesUpdated
         projectUpdated.cost -= cost
 
-        fetch(`${import.meta.env.DEV ? "http://localhost:5000" : "https://exclusive-golden-relish.glitch.me"}/projects/${projectUpdated.id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/projects/${projectUpdated.id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
@@ -89,9 +90,10 @@ export function ProjectPage() {
             project.services.pop()
             return
         }
+
         project.cost = newCost
 
-        fetch(`${import.meta.env.DEV ? "http://localhost:5000" : "https://exclusive-golden-relish.glitch.me"}/projects/${id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/projects/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
@@ -107,7 +109,7 @@ export function ProjectPage() {
 
     useEffect(() => {
         const controller = new AbortController()
-        fetch(`${import.meta.env.DEV ? "http://localhost:5000" : "https://exclusive-golden-relish.glitch.me"}/projects/${id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/projects/${id}`, {
             signal: controller.signal,
             method: 'GET',
             headers: {

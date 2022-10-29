@@ -1,14 +1,9 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
-import { ProjectFromApi } from '../../pages/Projects'
+import { Option, ProjectFromApi } from '../../types'
 import { Input } from '../form/Input'
 import { Select } from '../form/Select'
 import { SubmitButton } from '../form/SubmitButton'
 import styles from './ProjectForm.module.css'
-
-export interface Option {
-    id: number
-    name: string
-}
 
 interface ProjectFormProps {
     handleSubmit: (project: ProjectFromApi) => void
@@ -22,7 +17,7 @@ export function ProjectForm({ handleSubmit, btnText, projectData }: ProjectFormP
 
     useEffect(() => {
         const controller = new AbortController()
-        fetch(`${import.meta.env.DEV ? "http://localhost:5000" : "https://exclusive-golden-relish.glitch.me"}/categories`, {
+        fetch(`${import.meta.env.VITE_API_URL}/categories`, {
             signal: controller.signal,
             method: "GET",
             headers: {
