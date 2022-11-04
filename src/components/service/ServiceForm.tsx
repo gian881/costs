@@ -1,17 +1,17 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
-import { ProjectFromApi } from '../../types'
+import { Project } from '../../types'
 import { Input } from '../form/Input'
 import { SubmitButton } from '../form/SubmitButton'
 import styles from '../project/ProjectForm.module.css'
 
 interface ServiceFormProps {
-    handleSubmit: (project: ProjectFromApi) => void
+    handleSubmit: (project: Project) => void
     textBtn: string
-    projectData: ProjectFromApi
+    projectData: Project
 }
 
 export function ServiceForm({ handleSubmit, textBtn, projectData }: ServiceFormProps) {
-    const [service, setService] = useState({} as ProjectFromApi['services'][0])
+    const [service, setService] = useState({} as Project['services'][0])
 
     function submit(event: FormEvent) {
         event.preventDefault()

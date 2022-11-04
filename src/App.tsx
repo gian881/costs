@@ -7,22 +7,20 @@ import { NewProject } from './pages/NewProject'
 import { ProjectPage } from './pages/Project'
 import { Projects } from './pages/Projects'
 
-
-function App() {
+export function App() {
   return (
     <Router>
       <Navbar />
       <Container main customClass='min-height'>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/Projects" element={<Projects />} />
+          <Route path="/projects" element={<Projects />} />
           <Route path="/newproject" element={<NewProject />} />
           <Route path="/project/:id" element={<ProjectPage />} />
         </Routes>
       </Container>
-      <Footer></Footer>
+      <Footer />
     </Router>
   )
 }
 
-export default App
