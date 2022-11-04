@@ -1,11 +1,11 @@
 import { ChangeEvent } from 'react'
-import { Option } from '../../types'
+import { Category } from '../../types'
 import styles from './Select.module.css'
 
 interface SelectProps {
     text: string
     name: string
-    options: Option[]
+    options: Category[]
     value?: number
     handleOnChange?: (event: ChangeEvent<HTMLSelectElement>) => void
 }

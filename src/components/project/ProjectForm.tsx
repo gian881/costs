@@ -1,36 +1,25 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
-import { Option, ProjectFromApi } from '../../types'
+import { useQuery } from '@tanstack/react-query'
+import { ChangeEvent, FormEvent, useState } from 'react'
+import { getCategories } from '../../api/categoriesApi'
+import { Category, Project } from '../../types'
 import { Input } from '../form/Input'
 import { Select } from '../form/Select'
 import { SubmitButton } from '../form/SubmitButton'
+import { Loading } from '../layout/Loading'
+import { Error } from '../layout/Error'
 import styles from './ProjectForm.module.css'
 
 interface ProjectFormProps {
-    handleSubmit: (project: ProjectFromApi) => void
+    handleSubmit: (project: Project) => void
     btnText: string
-    projectData?: ProjectFromApi
+    projectData?: Project
 }
 
 export function ProjectForm({ handleSubmit, btnText, projectData }: ProjectFormProps) {
-    const [categories, setCategories] = useState<Option[]>([])
-    const [project, setProject] = useState<ProjectFromApi>(projectData || {} as ProjectFromApi)
+    const [project, setProject] = useState<Project>(projectData || {} as Project)
+    const { data: categories, isError, error, isLoading } = useQuery(['categories'], getCategories)
 
-    useEffect(() => {
-        const controller = new AbortController()
-        fetch(`${import.meta.env.VITE_API_URL}/categories`, {
-            signal: controller.signal,
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(res => res.json())
-            .then(data => setCategories(data))
-            .catch(error => { if (!(error instanceof DOMException)) console.error(error) })
-        return () => controller.abort()
-
-    }, [])
-
-    const submit = (e: FormEvent) => {
+    function submit(e: FormEvent) {
         e.preventDefault()
         handleSubmit(project)
     }
@@ -52,7 +41,6 @@ export function ProjectForm({ handleSubmit, btnText, projectData }: ProjectFormP
         })
     }
 
-
     return (
         <form onSubmit={submit} className={styles.form}>
             <Input
@@ -73,18 +61,18 @@ export function ProjectForm({ handleSubmit, btnText, projectData }: ProjectFormP
                 value={project.budget?.toString() ? project.budget.toString() : ''}
                 currency
             />
-            {project.category?.id ? (
+            {isLoading ? <Loading /> : isError ? <Error message="Something wen't wrong while trying to get the categories" /> : project.category?.id ? (
                 <Select
                     name='category_id'
                     text='Select the category'
-                    options={categories}
+                    options={categories as Category[]}
                     handleOnChange={handleCategory}
                     value={project.category?.id}
                 />) : (
                 <Select
                     name='category_id'
                     text='Select the category'
-                    options={categories}
+                    options={categories as Category[]}
                     handleOnChange={handleCategory}
                 />
             )}
