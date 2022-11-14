@@ -3,13 +3,15 @@
 <p align="center">
     <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="Typescript">  
     <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="ReactJS"> 
-    <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
+    <img src="https://img.shields.io/badge/-React%20Query-FF4154?style=for-the-badge&logo=react%20query&logoColor=white" alt="React Query">
+    <img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="TailwindCSS">
 </p>
 
 ## 📋 Índice
 
 - [Sobre](#-sobre)
 - [Tecnologias utilizadas](#-tecnologias-utilizadas)
+- [Live Demo](#-live-demo)
 - [Como baixar e utilizar o projeto](#-como-baixar-e-utilizar-o-projeto)
 
 ## 📖 Sobre
@@ -22,7 +24,12 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias
 
 - [ReactJS](https://reactjs.org)
 - [TypeScript](https://www.typescriptlang.org/)
+- [React Query](https://tanstack.com/query/v4)
+- [TailwindCSS](https://tailwindcss.com/)
 
+## 📱 Live Demo
+
+Você pode acessar a aplicação através do link: [Costs](https://costs-one.vercel.app/)
 ## 📁 Como baixar e utilizar o projeto
 
 Clone o repositório
