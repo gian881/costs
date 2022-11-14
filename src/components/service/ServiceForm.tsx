@@ -2,7 +2,6 @@ import { ChangeEvent, FormEvent, useState } from 'react'
 import { Project } from '../../types'
 import { Input } from '../form/Input'
 import { SubmitButton } from '../form/SubmitButton'
-import styles from '../project/ProjectForm.module.css'
 
 interface ServiceFormProps {
     handleSubmit: (project: Project) => void
@@ -29,7 +28,7 @@ export function ServiceForm({ handleSubmit, textBtn, projectData }: ServiceFormP
     }
 
     return (
-        <form onSubmit={submit} className={styles.form}>
+        <form onSubmit={submit} className="w-full my-8 flex flex-col">
             <Input
                 type='text'
                 text='Service name'
@@ -52,7 +51,7 @@ export function ServiceForm({ handleSubmit, textBtn, projectData }: ServiceFormP
                 placeholder='Fill description'
                 handleOnChange={handleChange}
             />
-            <SubmitButton text={textBtn} />
+            <SubmitButton>{textBtn}</SubmitButton>
         </form>
     )
 }

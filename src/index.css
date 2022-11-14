@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   padding: 0;
   margin: 0;
@@ -15,4 +19,32 @@
 body {
   background-color: #EFEFEF;
   height: 100vh;
+}
+
+.infra {
+  background-color: #FFAEBC;
+}
+
+.development {
+  background-color: #A0E7E5;
+}
+
+.design {
+  background-color: #B4F8C8;
+}
+
+.planning {
+  background-color: #FBE7C6;
+}
+
+.success {
+  color: #155724;
+  background-color: #D4EDDA;
+  border-color: #4DB364;
+}
+
+.error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #D92638;
 }

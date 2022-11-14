@@ -1,25 +1,24 @@
 import { Link } from 'react-router-dom'
 import logo from '../../img/costs_logo.png'
-import { Container } from './Container'
 import styles from './Navbar.module.css'
 
 export function Navbar() {
     return (
         <header>
-            <nav className={styles.navbar}>
-                <Container>
+            <div className="lg:flex lg:justify-center lg:items-center bg-gray-800">
+                <nav className="bg-gray-800 w-full flex justify-between p-4 lg:max-w-7xl">
                     <Link to='/'><img src={logo} alt="Costs" /></Link>
-                    <ul className={styles.list}>
-                        <li className={styles.item}>
-                            <Link to='/'>Home</Link>
+                    <ul className="flex list-none items-center">
+                        <li className="mr-4 text-2xl">
+                            <Link to='/' className='text-white hover:text-yellow-500'>Home</Link>
                         </li>
 
-                        <li className={styles.item}>
-                            <Link to='/projects'>Projects</Link>
+                        <li className="mr-4 text-2xl">
+                            <Link to='/projects' className='text-white hover:text-yellow-500'>Projects</Link>
                         </li>
                     </ul>
-                </Container>
-            </nav>
+                </nav>
+            </div>
         </header>
     )
 }

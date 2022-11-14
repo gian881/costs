@@ -3,17 +3,19 @@ export interface Category {
     name: string
 }
 
+export interface Service {
+    name: string
+    cost: number
+    description: string
+    id: string
+}
+
 export interface Project {
     category: Category
     name: string
     budget: number
     cost: number
-    services: {
-        name: string
-        cost: number
-        description: string
-        id: string
-    }[],
+    services: Service[],
     id: number
 }
 

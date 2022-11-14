@@ -1,6 +1,5 @@
 import { ChangeEvent } from 'react'
 import { Category } from '../../types'
-import styles from './Select.module.css'
 
 interface SelectProps {
     text: string
@@ -12,8 +11,8 @@ interface SelectProps {
 
 export function Select({ text, name, options, handleOnChange, value }: SelectProps) {
     return (
-        <div className={styles.formControl}>
-            <label htmlFor={name}>{text}</label>
+        <div className="flex flex-col mb-4">
+            <label htmlFor={name} className="mb-2 font-bold">{text}</label>
             {
                 value ? (
                     <select
@@ -21,6 +20,7 @@ export function Select({ text, name, options, handleOnChange, value }: SelectPro
                         id={name}
                         value={value}
                         onChange={handleOnChange}
+                        className="p-3 rounded-md placeholder:text-gray-500"
                     >
                         {options.map((opcao) => (
                             <option value={opcao.id} key={opcao.id}>
@@ -34,6 +34,7 @@ export function Select({ text, name, options, handleOnChange, value }: SelectPro
                         id={name}
                         defaultValue={0}
                         onChange={handleOnChange}
+                        className="p-3 rounded-md placeholder:text-gray-500"
                     >
                         <option value={0} hidden disabled>Select one option</option>
 

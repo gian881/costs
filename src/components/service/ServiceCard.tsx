@@ -1,6 +1,5 @@
 import { MouseEvent } from 'react'
 import { BsFillTrashFill } from 'react-icons/bs'
-import styles from '../project/ProjectCard.module.css'
 
 interface ServiceCardProps {
     id: string
@@ -17,14 +16,18 @@ export function ServiceCard({ id, name, cost, description, handleRemove }: Servi
     }
 
     return (
-        <div className={styles.projectCard}>
-            <h4>{name}</h4>
-            <p>
-                <span>Total cost:</span> R$ {cost.toFixed(2).replace('.', ',')}
+        <div className="p-4 border border-gray-500 rounded-md w-full flex-1 max-w-xs m-2">
+            <h4 className='bg-[#222] text-yellow-500 py-2 mb-5 text-xl rounded-md px-4 overflow-hidden'>
+                {name}
+            </h4>
+            <p className='text-gray-500 mb-4'>
+                <span className='font-bold'>Total cost:</span> R$ {cost.toFixed(2).replace('.', ',')}
             </p>
-            <p>{description}</p>
-            <div className={styles.projectCardActions}>
-                <button onClick={remove}>
+
+            <p className='text-gray-500 mb-4'>{description}</p>
+
+            <div className="mt-5 flex items-center">
+                <button onClick={remove} className="bg-white text-gray-800 py-1 px-2 sm:py-2 sm:px-4 mr-4 cursor-pointer border border-gray-800 flex items-center justify-center transition-colors duration-500 rounded-md hover:bg-gray-800 hover:text-yellow-500 text-xs sm:text-base">
                     <BsFillTrashFill /> Remove
                 </button>
             </div>
