@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react'
-import styles from './Message.module.css'
-
 interface MessageProps {
     type: 'error' | 'success'
     msg: string
@@ -22,7 +20,7 @@ export function Message({ type, msg }: MessageProps) {
     return (
         <>
             {visible && (
-                <div className={`${styles.message} ${styles[type]}`}>
+                <div className={`w-full p-4 border mx-auto text-center my-8 rounded-md ${type}`}>
                     {msg}
                 </div>
             )}

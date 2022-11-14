@@ -5,9 +5,8 @@ import { Category, Project } from '../../types'
 import { Input } from '../form/Input'
 import { Select } from '../form/Select'
 import { SubmitButton } from '../form/SubmitButton'
-import { Loading } from '../layout/Loading'
 import { Error } from '../layout/Error'
-import styles from './ProjectForm.module.css'
+import { Loading } from '../layout/Loading'
 
 interface ProjectFormProps {
     handleSubmit: (project: Project) => void
@@ -42,7 +41,7 @@ export function ProjectForm({ handleSubmit, btnText, projectData }: ProjectFormP
     }
 
     return (
-        <form onSubmit={submit} className={styles.form}>
+        <form onSubmit={submit} className="w-full my-8 flex flex-col">
             <Input
                 type='text'
                 text='Name of the project'
@@ -61,6 +60,7 @@ export function ProjectForm({ handleSubmit, btnText, projectData }: ProjectFormP
                 value={project.budget?.toString() ? project.budget.toString() : ''}
                 currency
             />
+
             {isLoading ? <Loading /> : isError ? <Error message="Something wen't wrong while trying to get the categories" /> : project.category?.id ? (
                 <Select
                     name='category_id'
@@ -77,7 +77,7 @@ export function ProjectForm({ handleSubmit, btnText, projectData }: ProjectFormP
                 />
             )}
 
-            <SubmitButton text={btnText} />
+            <SubmitButton>{btnText}</SubmitButton>
         </form >
     )
 }

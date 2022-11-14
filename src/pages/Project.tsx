@@ -10,8 +10,6 @@ import { ProjectForm } from '../components/project/ProjectForm'
 import { ServiceCard } from '../components/service/ServiceCard'
 import { ServiceForm } from '../components/service/ServiceForm'
 import { Project } from '../types'
-import styles from './Project.module.css'
-
 
 export function ProjectPage() {
     const { id } = useParams<{ id: string }>()
@@ -71,7 +69,6 @@ export function ProjectPage() {
         }
 
         editProjectMutation.mutate(project)
-
     }
 
     function removeService(id: string, cost: number) {
@@ -126,61 +123,69 @@ export function ProjectPage() {
 
     return (
         <>
-            <div className={styles.projectDetails}>
-                <Container customClass="column">
-                    {message && <Message msg={message} type={messageType} />}
-                    <div className={styles.detailsContainer}>
-                        <h1>Project: {(project as Project).name}</h1>
-                        <button className={styles.btn} onClick={() => setShowProjectForm(prev => !prev)}>{showProjectForm ? "Close" : "Edit project"}</button>
-                        {showProjectForm ? (
-                            <div className={styles.projectInfo}>
-                                <ProjectForm btnText='Concluir edição' handleSubmit={editPost} projectData={(project as Project)} />
-                            </div>
-                        ) : (
-                            <div className={styles.projectInfo}>
-                                <p>
-                                    <span>Category:</span> {(project as Project).category.name}
-                                </p>
-                                <p>
-                                    <span>Total budget:</span> R$ {(project as Project).budget.toFixed(2).replace('.', ',')}
-                                </p>
-                                <p>
-                                    <span>Budget utilized:</span> R$ {(project as Project).cost.toFixed(2).replace('.', ',')}
-                                </p>
-                            </div>
+            <div className="w-full p-2 sm:p-8 flex flex-col justify-start">
+                {message && <Message msg={message} type={messageType} />}
+                <div className="border-b border-gray-500 pb-5 mb-5 flex justify-between flex-wrap">
+                    <h1 className='mb-2 bg-gray-800 text-yellow-500 p-2 rounded-md text-2xl font-bold overflow-hidden'>
+                        Project: {(project as Project).name}
+                    </h1>
+                    <button
+                        className="bg-gray-800 text-white hover:text-yellow-500 rounded-md py-2 px-4 cursor-pointer max-h-10 transition-colors duration-500 w-full sm:w-fit"
+                        onClick={() => setShowProjectForm(prev => !prev)}>
+                        {showProjectForm ? "Close" : "Edit project"}
+                    </button>
+                    {showProjectForm ? (
+                        <div className="w-full mt-4">
+                            <ProjectForm
+                                btnText='Concluir edição'
+                                handleSubmit={editPost}
+                                projectData={(project as Project)}
+                            />
+                        </div>
+                    ) : (
+                        <div className="w-full mt-4">
+                            <p className='mb-2'>
+                                <span className='font-bold'>Category:</span> {(project as Project).category.name}
+                            </p>
+                            <p className='mb-2'>
+                                <span className='font-bold'>Total budget:</span> R$ {(project as Project).budget.toFixed(2).replace('.', ',')}
+                            </p>
+                            <p className='mb-2'>
+                                <span className='font-bold'>Budget utilized:</span> R$ {(project as Project).cost.toFixed(2).replace('.', ',')}
+                            </p>
+                        </div>
+                    )}
+                </div>
+                <div className="border-b border-gray-500 pb-5 mb-5 flex justify-between flex-wrap">
+                    <h2 className='mb-2 font-bold'>Add a service</h2>
+                    <button className="bg-gray-800 text-white hover:text-yellow-500 rounded-md py-2 px-4 cursor-pointer max-h-10 transition-colors duration-500 w-full sm:w-fit" onClick={() => setShowServiceForm(prev => !prev)}>
+                        {showServiceForm ? "Close" : "Add service"}
+                    </button>
+                    <div className="w-full">
+                        {showServiceForm && (
+                            <ServiceForm
+                                handleSubmit={createService}
+                                textBtn='Add service'
+                                projectData={(project as Project)}
+                            />
                         )}
                     </div>
-                    <div className={styles.serviceFormContainer}>
-                        <h2>Add a service</h2>
-                        <button className={styles.btn} onClick={() => setShowServiceForm(prev => !prev)}>
-                            {showServiceForm ? "Close" : "Add service"}
-                        </button>
-                        <div className={styles.projectInfo}>
-                            {showServiceForm && (
-                                <ServiceForm
-                                    handleSubmit={createService}
-                                    textBtn='Add service'
-                                    projectData={(project as Project)}
-                                />
-                            )}
-                        </div>
-                    </div>
-                    <h2>Services</h2>
-                    <Container customClass='start'>
-                        {(project as Project).services.length > 0
-                            ? (project as Project).services.map(service => (
-                                <ServiceCard
-                                    id={service.id}
-                                    name={service.name}
-                                    cost={service.cost}
-                                    description={service.description}
-                                    key={service.id}
-                                    handleRemove={removeService}
-                                />
-                            ))
-                            : <p>There are no registered services</p>}
-                    </Container>
-                </Container>
+                </div>
+                <h2 className='mb-2 font-bold'>Services</h2>
+                <div className="">
+                    {(project as Project).services.length > 0
+                        ? (project as Project).services.map(service => (
+                            <ServiceCard
+                                id={service.id}
+                                name={service.name}
+                                cost={service.cost}
+                                description={service.description}
+                                key={service.id}
+                                handleRemove={removeService}
+                            />
+                        ))
+                        : <p className='mb-2'>There are no registered services</p>}
+                </div>
             </div>
         </>
     )

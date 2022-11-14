@@ -1,6 +1,5 @@
 import { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
-import styles from './LinkButton.module.css'
 
 interface LinkButtonProps {
     to: string
@@ -9,7 +8,7 @@ interface LinkButtonProps {
 
 export function LinkButton({ to, children }: LinkButtonProps) {
     return (
-        <Link className={styles.btn} to={to}>
+        <Link className="bg-gray-800 text-white py-2 px-4 rounded-md transition-colors duration-500 hover:text-yellow-500" to={to}>
             {children}
         </Link>
     )
