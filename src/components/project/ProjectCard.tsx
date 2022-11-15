@@ -18,7 +18,7 @@ export function ProjectCard({ id, name, budget, category, handleRemove }: Projec
 
     return (
         <div className="p-4 border border-gray-500 rounded-md w-full sm:w-1/3 sm:max-w-xs m-2">
-            <h4 className='bg-[#222] text-yellow-500 py-2 mb-5 text-xl rounded-md px-4 overflow-hidden'>
+            <h4 className='font-bold bg-[#222] text-yellow-500 py-2 mb-5 text-xl rounded-md px-4 overflow-hidden'>
                 {name}
             </h4>
 

@@ -17,7 +17,7 @@ export function ServiceCard({ id, name, cost, description, handleRemove }: Servi
 
     return (
         <div className="p-4 border border-gray-500 rounded-md w-full flex-1 max-w-xs m-2">
-            <h4 className='bg-[#222] text-yellow-500 py-2 mb-5 text-xl rounded-md px-4 overflow-hidden'>
+            <h4 className='font-bold bg-[#222] text-yellow-500 py-2 mb-5 text-xl rounded-md px-4 overflow-hidden'>
                 {name}
             </h4>
             <p className='text-gray-500 mb-4'>
