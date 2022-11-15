@@ -9,18 +9,6 @@
   font-family: Poppins, sans-serif;
 }
 
-#root {
-  background-color: #EFEFEF;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-body {
-  background-color: #EFEFEF;
-  height: 100vh;
-}
-
 .infra {
   background-color: #FFAEBC;
 }

@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.tsx'],
+  content: [
+    'index.html',
+    './src/**/*.tsx'
+  ],
   theme: {
     extend: {
       borderRadius: {
@@ -11,6 +14,7 @@ module.exports = {
           500: "#FFBB33"
         },
         gray: {
+          50: "#EFEFEF",
           200: "#CCCCCC",
           500: "#7A7A7A",
           800: "#222"
