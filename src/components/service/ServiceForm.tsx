@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
-import { Project } from '../../types'
+import { Project, Service } from '../../types'
 import { Input } from '../form/Input'
 import { SubmitButton } from '../form/SubmitButton'
 
@@ -10,7 +10,7 @@ interface ServiceFormProps {
 }
 
 export function ServiceForm({ handleSubmit, textBtn, projectData }: ServiceFormProps) {
-    const [service, setService] = useState({} as Project['services'][0])
+    const [service, setService] = useState({} as Service)
 
     function submit(event: FormEvent) {
         event.preventDefault()

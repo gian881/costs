@@ -61,6 +61,6 @@ export function Projects() {
                     ))
                     : null}
             </div>
-        </div >
+        </div>
     )
 }
