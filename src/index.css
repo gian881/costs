@@ -10,29 +10,29 @@
 }
 
 .infra {
-  background-color: #FFAEBC;
+  background-color: #ffaebc;
 }
 
 .development {
-  background-color: #A0E7E5;
+  background-color: #a0e7e5;
 }
 
 .design {
-  background-color: #B4F8C8;
+  background-color: #b4f8c8;
 }
 
 .planning {
-  background-color: #FBE7C6;
+  background-color: #fbe7c6;
 }
 
 .success {
   color: #155724;
-  background-color: #D4EDDA;
-  border-color: #4DB364;
+  background-color: #d4edda;
+  border-color: #4db364;
 }
 
 .error {
   color: #721c24;
   background-color: #f8d7da;
-  border-color: #D92638;
+  border-color: #d92638;
 }

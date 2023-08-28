@@ -1,5 +1,3 @@
 export function Company() {
-    return (
-        <h2>Company</h2>
-    )
+  return <h2>Company</h2>;
 }
