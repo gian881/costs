@@ -61,12 +61,11 @@ export function ProjectForm({
   projectData,
 }: ProjectFormProps) {
   const [project, setProject] = useState<Project>(
-    projectData || ({} as Project)
+    projectData ?? ({} as Project)
   );
   const {
     data: categories,
     isError,
-    error,
     isLoading,
   } = useQuery(["categories"], getCategories);
 
