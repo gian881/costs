@@ -5,7 +5,7 @@ import { Category, Project } from "../../types";
 import { Input } from "../form/Input";
 import { Select } from "../form/Select";
 import { SubmitButton } from "../form/SubmitButton";
-import { ErrorCard } from "../layout/Error";
+import { ErrorCard } from "../layout/ErrorCard";
 import { Loading } from "../layout/Loading";
 
 interface CategoriesSelectProps {
